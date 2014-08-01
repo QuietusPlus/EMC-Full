@@ -828,6 +828,10 @@ import class W2MinigameDicePoker extends CMinigame
 		{
 			value = values[ i ];
 			
+			if ( figure == MinigameDicePokerResult_None ) {
+				figure = MinigameDicePokerResult_Poker;
+			}
+			
 			if ( value != values[ i - 1 ] || value == 0 )
 				continue;
 		
