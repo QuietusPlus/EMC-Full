@@ -1,3 +1,5 @@
+import function FindEnemiesInCombatArea() : array< CActor >;
+
 // ---------------------------------------------------------
 //                  shitty CSTakedown class
 // ---------------------------------------------------------
@@ -777,7 +779,48 @@ state Idle in CSTakedown
 		var targets : array<CActor>;
 		var takedownParams : STakedownParams;
 		var cutsceneRange : EFinisherDistance;
+		var enemiesCloseHostile : int;
+		var npc : CNewNPC;
+		var doInstantKill : bool;
+		
 		targets.PushBack(target);
+		
+		if ( target.GetCurrentStateName() == 'Stun' ) {
+			
+			GetActorsInRange(enemiesClose, 15.0, '', thePlayer);
+			enemiesCloseHostile = 0;
+			
+			for ( i=0; i < enemiesClose.Size(); i+=1 ) {
+				npc = (CNewNPC)enemiesClose[i];
+				if ( npc && npc.IsAlive() ) {
+					if ( npc && npc.IsAlive() && npc.GetAttitude(thePlayer) == AIA_Hostile ) {
+						enemiesCloseHostile += 1;
+					}
+				}
+			}
+			
+			if ( enemiesCloseHostile == 1 && RandF() * 100 < 50 ) {
+				doInstantKill = false;
+			} else {
+				doInstantKill = true;
+			}
+		}
+		
+		if( doInstantKill ) {
+			target.Kill(false, thePlayer, deathData);
+			target.StopEffect('stun_fx');
+			target.PlayEffect('instant_kill_fx');
+
+			for( i=0; i < enemiesClose.Size(); i+=1 ) {		
+				npc = (CNewNPC)enemiesClose[i];
+				if ( npc && npc.IsAlive() && npc.GetAttitude(thePlayer) == AIA_Hostile ) {
+					npc.StopEffect('stun_fx');
+					npc.OnCriticalEffectStop( CET_Stun );
+				}
+			}
+			return; 
+		}
+		
 		if(adrenaline)
 		{
 			thePlayer.SetAdrenaline( 0 );
