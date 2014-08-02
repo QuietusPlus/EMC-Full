@@ -7712,15 +7712,8 @@ thePlayer.RemoveAllBuffs();
 
 /////////////////////// DLC ///////////////////////////////////
 
-	event OnDlc_roche_jacket()
-	{
-		GetInventory().AddItem( 'Roche Commando Jacket', 1, true );
-	}
-	
 	event OnDlc_alchemy_suit()
 	{
-		GetInventory().AddItem( 'Herbalist Gloves', 1, true );
-		
 		//GetInventory().AddItem( 'White Myrtle Petals', 15, true ); jaskolcze ziele, przestep, tegoskor
 		//GetInventory().AddItem( 'Hellebore Petals', 15, true );
 		//GetInventory().AddItem( 'Celandine', 15, true );
@@ -7731,21 +7724,9 @@ thePlayer.RemoveAllBuffs();
 		GetInventory().AddItem( 'Verbena', 8, true );
 		GetInventory().AddItem( 'Balisse', 8, true );
 	}
-
-	event OnDlc_magical_suit()
-	{
-		GetInventory().AddItem( 'Unique Essenced Pants', 1, true );
-		
-		GetInventory().AddItem( 'Rune of Sun', 1, true );
-		GetInventory().AddItem( 'Rune of Earth', 1, true );
-		GetInventory().AddItem( 'Rune of Moon', 1, true );
-		GetInventory().AddItem( 'Rune of Fire', 1, true );
-	}
 	
 	event OnDlc_swordsman_suit()
 	{
-		GetInventory().AddItem( 'Unique Whetstone', 10, true );
-		
 		GetInventory().AddItem( 'Brown Oil', 4, true );
 		GetInventory().AddItem( 'Hangman Venom', 4, true );
 		GetInventory().AddItem( 'Crinfrid Oil', 4, true );
