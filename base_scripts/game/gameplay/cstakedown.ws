@@ -792,10 +792,8 @@ state Idle in CSTakedown
 			
 			for ( i=0; i < enemiesClose.Size(); i+=1 ) {
 				npc = (CNewNPC)enemiesClose[i];
-				if ( npc && npc.IsAlive() ) {
-					if ( npc && npc.IsAlive() && npc.GetAttitude(thePlayer) == AIA_Hostile ) {
-						enemiesCloseHostile += 1;
-					}
+				if ( npc && npc.IsAlive() && npc.GetAttitude(thePlayer) == AIA_Hostile ) {
+					enemiesCloseHostile += 1;
 				}
 			}
 			
