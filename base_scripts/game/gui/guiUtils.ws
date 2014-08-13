@@ -89,7 +89,7 @@ import class CGuiUtils extends CObject
 			tagCreatedItem = true;
 		}
 		
-		if ( tagItemTags.Contains('DarkDiffA1')|| tagItemTags.Contains('DarkDiffA2') || tagItemTags.Contains('DarkDiffA3') ) {
+		if ( tagItemTags.Contains('DarkDiffA1') || tagItemTags.Contains('DarkDiffA2') || tagItemTags.Contains('DarkDiffA3') ) {
 			tagLocTag = GetLocStringByKeyExt( "menudifficultyveryhard" );
 		} else if ( tagItemTags.Contains('SortTypeQuest') || tagItemCategory == 'quest') {
 			if ( tagItemCategory == 'key' ) {
@@ -133,10 +133,8 @@ import class CGuiUtils extends CObject
 			tagLocTag = GetLocStringByKeyExt( "type_trap" );
 		} else if ( tagItemCategory == 'trophy' ) {
 			tagLocTag = GetLocStringByKeyExt( "type_trophy" );
-		} else if ( tagLocTag == "" ) {
-			if ( tagItemCategory == 'alchemyingredient' || tagItemCategory == 'craftingingredient') {
-				tagLocTag = GetLocStringByKeyExt( "[[locale.inv.listcraftingingredients]]" );
-			}
+		} else if ( tagItemTags.Contains('SortTypeIngridient') ) {
+			tagLocTag = GetLocStringByKeyExt( "[[locale.inv.listcraftingingredients]]" );
 		}
 		
 		if ( tagCreatedItem ) {
